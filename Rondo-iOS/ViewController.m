@@ -27,6 +27,9 @@
     if(LPLocation.needsAuthorization){
         [LPLocation authorize];
     }
+    
+#define SERVER @"leanplum-staging.appspot.com"
+    [Leanplum setApiHostName:SERVER withServletName:@"api" usingSsl: true];
 
     [self updateConfigLabels];
 #ifdef DEBUG
@@ -35,6 +38,8 @@
 #else
     [Leanplum setAppId:LPT_APP_ID withProductionKey:LPT_PRODUCTION_KEY];
 #endif
+    
+
 
     [Leanplum start];
 
