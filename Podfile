@@ -2,19 +2,16 @@
  platform :ios, '11.0'
 
 
-def use_lp_source
-  pod 'Leanplum-iOS-SDK', :path => '../Leanplum-iOS-SDK'
-  pod 'Leanplum-iOS-Location', :path => '../Leanplum-iOS-SDK'
-#  pod 'Leanplum-iOS-LocationAndBeacons', :path => '../Leanplum-iOS-SDK'
+def use_source
+  pod 'CleverTap-iOS-SDK', :path => '/Users/nikolazagorchev/Developer/clevertap-ios-sdk'
 end
 
-def use_lp_release
-  version = ENV['LEANPLUM_SDK_VERSION']
+def use_release
+  version = ENV['CT_SDK_VERSION']
   if version == nil
-    version = "6.1.0"
+    version = "5.0.1"
   end
-  pod 'Leanplum-iOS-SDK', version
-  pod 'Leanplum-iOS-LocationAndBeacons', version
+  pod 'CleverTap-iOS-SDK', version
 end
 
 def shared_pods
@@ -25,8 +22,8 @@ target 'Rondo-iOS' do
   use_frameworks!
 
   # Release pods
-  # use_lp_source
-  use_lp_release
+   use_source
+#  use_release
 
   # Shared pods
   shared_pods

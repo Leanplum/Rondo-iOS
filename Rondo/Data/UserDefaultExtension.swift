@@ -3,10 +3,11 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 07/04/2020.
-//  Copyright © 2020 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import UIKit
+import CleverTapSDK
 
 extension UserDefaults {
 
@@ -53,22 +54,6 @@ extension UserDefaults {
         }
     }
 
-    var envs: [LeanplumEnv] {
-        get {
-            if let data = self[.envs] as? Data {
-                return (try? JSONDecoder().decode([LeanplumEnv].self, from: data)) ?? []
-            }
-            return []
-        }
-        set {
-            let oldValue = envs
-            self[.envs] = try? JSONEncoder().encode(newValue)
-            if newValue != oldValue {
-                postObserverNotificationFor(key: .envs)
-            }
-        }
-    }
-
     var app: LeanplumApp? {
         get {
             if let data = self[.app] as? Data {
@@ -84,27 +69,11 @@ extension UserDefaults {
             }
         }
     }
-
-    var env: LeanplumEnv? {
-        get {
-            if let data = self[.env] as? Data {
-                return try? JSONDecoder().decode(LeanplumEnv.self, from: data)
-            }
-            return nil
-        }
-        set {
-            let oldValue = env
-            self[.env] = try? JSONEncoder().encode(newValue)
-            if newValue != oldValue {
-                postObserverNotificationFor(key: .env)
-            }
-        }
-    }
     
-    var logLevel: LeanplumLogLevel {
+    var logLevel: CleverTapLogLevel {
         get {
             if let value = self[.logLevel] as? UInt,
-               let level = LeanplumLogLevel.init(rawValue: value) {
+               let level = CleverTapLogLevel.init(rawValue: Int32(value)) {
                 return level
             }
             return .debug

@@ -8,13 +8,13 @@
 
 import UIKit
 import Eureka
-import Leanplum
+import CleverTapSDK
 
 class MessagesViewController: FormViewController {
     enum MessageSegments: String, CaseIterable, CustomStringConvertible {
         case iam = "IAM"
         case push = "Push"
-        case actionManager = "Action Manager"
+//        case actionManager = "Action Manager"
         
         var description: String {
             return rawValue
@@ -27,7 +27,7 @@ class MessagesViewController: FormViewController {
     
     private let segmentedControl = UISegmentedControl(items: MessageSegments.items)
 
-    let model = ActionManagerModel()
+//    let model = ActionManagerModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,9 @@ class MessagesViewController: FormViewController {
                 if row.tag == "systemPush" {
                     self.requestSystemPushPermission()
                 } else if row.tag == "provisionalPush" {
-                    Leanplum.enableProvisionalPushNotifications()
+                    self.requestProvisionalPushPermission()
                 } else {
-                    Leanplum.track(row.tag!)
+                    LeanplumCT.track(row.tag!)
                 }
             }
         }
@@ -76,14 +76,32 @@ class MessagesViewController: FormViewController {
             buildIAM()
         case .push:
             buildPush()
-        case .actionManager:
-            buildActionManager()
+//        case .actionManager:
+//            buildActionManager()
         }
     }
     
     func requestSystemPushPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if let error = error {
+                // Handle the error here.
+                Log.print("Error: \(error)")
+            }
+            
+            // Enable or disable features based on the authorization.
+            if granted {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
+    
+    func requestProvisionalPushPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.provisional]) { granted, error in
             
             if let error = error {
                 // Handle the error here.

@@ -13,17 +13,17 @@ class TabViewController: UITabBarController {
     enum Tab: CaseIterable {
         case home
         case migration
-        case variables
+//        case variables
         case events
         case messages
-        case inbox
+//        case inbox
 
         var name: String {
             switch self {
             case .home: return "Home"
             case .messages: return "Messages"
-            case .variables: return "Variables"
-            case .inbox: return "Inbox"
+//            case .variables: return "Variables"
+//            case .inbox: return "Inbox"
             case .events: return "Events"
             case .migration: return "Migration"
             }
@@ -33,8 +33,8 @@ class TabViewController: UITabBarController {
             switch self {
             case .home: return UIImage(systemName: "house")
             case .messages: return UIImage(systemName: "doc.richtext")
-            case .variables: return UIImage(systemName: "number")
-            case .inbox: return UIImage(systemName: "tray")
+//            case .variables: return UIImage(systemName: "number")
+//            case .inbox: return UIImage(systemName: "tray")
             case .events: return UIImage(systemName: "bell")
             case .migration: return UIImage(systemName: "arrow.merge")
             }
@@ -82,10 +82,10 @@ class TabViewController: UITabBarController {
             vc = HomeViewController(style: .insetGrouped)
         case .messages:
             vc = MessagesViewController(style: .insetGrouped)
-        case .variables:
-            vc = VariablesViewController(style: .insetGrouped)
-        case .inbox:
-            vc = InboxViewController(style: .insetGrouped)
+//        case .variables:
+//            vc = VariablesViewController(style: .insetGrouped)
+//        case .inbox:
+//            vc = InboxViewController(style: .insetGrouped)
         case .events:
             vc = EventsViewController(style: .insetGrouped)
         case .migration:

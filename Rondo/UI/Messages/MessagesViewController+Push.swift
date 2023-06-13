@@ -15,7 +15,7 @@ extension MessagesViewController {
         
         buildPushPermissions()
         buildPushTriggers()
-        buildCleverTapPush()
+//        buildCleverTapPush()
         buildNotificationPresentationOptions()
     }
     
@@ -95,32 +95,32 @@ extension MessagesViewController {
         form +++ section
     }
     
-    func buildCleverTapPush() {
-        let section = Section("CleverTap Push")
-        
-        section <<< SwitchRow {
-            $0.title = "Open DeepLinks In Foreground"
-            $0.value = false
-        }.onChange({ row in
-            Leanplum.setCleverTapOpenDeepLinksInForeground(row.value!)
-        })
-        
-        section <<< SwitchRow {
-            $0.title = "Handle CleverTap Notification"
-            $0.value = false
-        }.onChange({ row in
-            if row.value! {
-                Leanplum.setHandleCleverTapNotification { (userInfo, isNotificationOpen, block) in
-                    Log.print("CleverTap handle push block: \(userInfo), isNotificationOpen: \(isNotificationOpen)")
-                    block(isNotificationOpen)
-                }
-            } else {
-                Leanplum.setHandleCleverTapNotification(nil)
-            }
-        })
-        
-        form +++ section
-    }
+//    func buildCleverTapPush() {
+//        let section = Section("CleverTap Push")
+//
+//        section <<< SwitchRow {
+//            $0.title = "Open DeepLinks In Foreground"
+//            $0.value = false
+//        }.onChange({ row in
+//            Leanplum.setCleverTapOpenDeepLinksInForeground(row.value!)
+//        })
+//
+//        section <<< SwitchRow {
+//            $0.title = "Handle CleverTap Notification"
+//            $0.value = false
+//        }.onChange({ row in
+//            if row.value! {
+//                Leanplum.setHandleCleverTapNotification { (userInfo, isNotificationOpen, block) in
+//                    Log.print("CleverTap handle push block: \(userInfo), isNotificationOpen: \(isNotificationOpen)")
+//                    block(isNotificationOpen)
+//                }
+//            } else {
+//                Leanplum.setHandleCleverTapNotification(nil)
+//            }
+//        })
+//
+//        form +++ section
+//    }
     
     func buildNotificationPresentationOptions() {
         let section = Section("Notification Presentation Options")

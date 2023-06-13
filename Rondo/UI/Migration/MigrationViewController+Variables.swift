@@ -72,7 +72,7 @@ extension MigrationViewController {
         
         section <<< LabelRow {
             $0.title = "var_dict"
-            $0.value = LPJSON.string(fromJSON: var_dict?.value)
+            $0.value = Util.stringFromJSON(var_dict?.value)
             $0.cell.detailTextLabel?.numberOfLines = 0
         }
         
@@ -85,7 +85,7 @@ extension MigrationViewController {
         
         section <<< LabelRow {
             $0.title = "dot_group.var_dict"
-            $0.value = LPJSON.string(fromJSON: var_dot_dict?.value)
+            $0.value = Util.stringFromJSON(var_dot_dict?.value)
             $0.cell.textLabel?.numberOfLines = 0
             $0.cell.detailTextLabel?.numberOfLines = 0
         }

@@ -3,7 +3,7 @@
 //  Rondo-iOS
 //
 //  Created by Nikola Zagorchev on 19.07.22.
-//  Copyright © 2022 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import Foundation
@@ -28,6 +28,13 @@ struct Util {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         let data = try! encoder.encode(model)
+        return String(data: data, encoding: .utf8)!
+    }
+    
+    static func stringFromJSON(_ model: Any) -> String? {
+        guard JSONSerialization.isValidJSONObject(model) else { return nil }
+        
+        let data = try! JSONSerialization.data(withJSONObject: model)
         return String(data: data, encoding: .utf8)!
     }
 }

@@ -3,24 +3,17 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 13/12/2019.
-//  Copyright © 2019 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import Foundation
+import CleverTapSDK
 
 struct LeanplumApp: Equatable, Codable {
-
-    enum Mode: String, CaseIterable, Codable {
-        case production
-        case development
-    }
-
     let name: String
-    let appId: String
-    let productionKey: String
-    let developmentKey: String
-
-    var mode: Mode = .production
+    let accountId: String
+    let accountToken: String
+    let region: String
 }
 
 extension LeanplumApp: CustomStringConvertible {
@@ -30,13 +23,12 @@ extension LeanplumApp: CustomStringConvertible {
     }
 }
 
-extension LeanplumLogLevel: CustomStringConvertible {
+extension CleverTapLogLevel: CustomStringConvertible {
     public var description : String {
         switch self {
         case .off: return "Off"
         case .debug: return "Debug"
         case .info: return "Info"
-        case .error: return "Error"
         @unknown default:
             return "Unknown"
         }

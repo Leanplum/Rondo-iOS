@@ -3,7 +3,7 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 07/04/2020.
-//  Copyright © 2020 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import UIKit
@@ -16,9 +16,9 @@ class AddAppViewController: FormViewController {
 
     private enum Tags: String {
         case name
-        case appId
-        case production
-        case development
+        case accountId
+        case accountToken
+        case region
     }
 
     override func viewDidLoad() {
@@ -36,7 +36,6 @@ class AddAppViewController: FormViewController {
         }
 
         buildInfo()
-        buildAddWithCamera()
     }
 
     func buildInfo() {
@@ -53,39 +52,25 @@ class AddAppViewController: FormViewController {
         }
 
         section <<< TextRow() {
-            $0.tag = Tags.appId.rawValue
-            $0.title = "App Id"
+            $0.tag = Tags.accountId.rawValue
+            $0.title = "Account Id"
             $0.add(ruleSet: rules)
             $0.validationOptions = .validatesOnChangeAfterBlurred
         }
 
         section <<< TextRow() {
-            $0.tag = Tags.development.rawValue
-            $0.title = "Development key"
+            $0.tag = Tags.accountToken.rawValue
+            $0.title = "Account Token"
             $0.add(ruleSet: rules)
             $0.validationOptions = .validatesOnChangeAfterBlurred
         }
 
         section <<< TextRow() {
-            $0.tag = Tags.production.rawValue
-            $0.title = "Production key"
+            $0.tag = Tags.region.rawValue
+            $0.title = "Region"
             $0.add(ruleSet: rules)
             $0.validationOptions = .validatesOnChangeAfterBlurred
         }
-
-        form +++ section
-    }
-
-    func buildAddWithCamera() {
-        let section = Section()
-
-        section <<< ButtonRow() {
-            $0.title = "Scan QR code"
-        }.onCellSelection({ (cell, row) in
-            let viewController = ScannerViewController()
-            viewController.delegate = self.parse(code:)
-            self.present(viewController, animated: true)
-        })
 
         form +++ section
     }
@@ -101,9 +86,9 @@ class AddAppViewController: FormViewController {
         }
         if errors.count == 0 {
             let app = LeanplumApp(name: formValue(tag: .name),
-                                  appId: formValue(tag: .appId),
-                                  productionKey: formValue(tag: .production),
-                                  developmentKey: formValue(tag: .development))
+                                  accountId: formValue(tag: .accountId),
+                                  accountToken: formValue(tag: .accountToken),
+                                  region: formValue(tag: .region))
             context.apps.append(app)
             self.dismiss(animated: true)
         }
@@ -112,28 +97,6 @@ class AddAppViewController: FormViewController {
     private func formValue(tag: Tags) -> String {
         let row = form.rowBy(tag: tag.rawValue) as? TextRow
         return row?.value ?? ""
-    }
-
-    func parse(code: String) {
-        if let data = code.data(using: .utf8) {
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-                    return
-                }
-
-                let appId = form.rowBy(tag: Tags.appId.rawValue) as? TextRow
-                appId?.value = json["app_id"] as? String
-
-                let development = form.rowBy(tag: Tags.development.rawValue) as? TextRow
-                development?.value = json["development"] as? String
-
-                let production = form.rowBy(tag: Tags.production.rawValue) as? TextRow
-                production?.value = json["production"] as? String
-
-            } catch {
-                Log.print(error.localizedDescription)
-            }
-        }
     }
 }
 

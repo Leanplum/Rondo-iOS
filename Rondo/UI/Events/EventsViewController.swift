@@ -3,12 +3,12 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 18/03/2020.
-//  Copyright © 2020 Leanplum. All rights reserved.
+//  Copyright © 2020 LeanplumCT. All rights reserved.
 //
 
 import UIKit
 import Eureka
-import Leanplum
+import CleverTapSDK
 
 class EventsViewController: FormViewController {
     private let segmentedControl = UISegmentedControl(items: ["Events", "Triggers"])
@@ -56,7 +56,6 @@ extension EventsViewController {
         buildUserId()
         buildUserAttributes()
         buildDeviceId()
-        buildForceContentUpdate()
     }
 
     func buildTrack() {
@@ -112,9 +111,9 @@ extension EventsViewController {
 
             guard let _event = event else { return }
             if params.isEmpty {
-                Leanplum.track(_event)
+                LeanplumCT.track(_event)
             } else {
-                Leanplum.track(_event, params: params)
+                LeanplumCT.track(_event, params: params)
             }
         }
 
@@ -172,9 +171,9 @@ extension EventsViewController {
             
             guard let _state = state else { return }
             if params.isEmpty {
-                Leanplum.advance(state: _state)
+                LeanplumCT.advance(state: _state)
             } else {
-                Leanplum.advance(state: _state, params: params)
+                LeanplumCT.advance(state: _state, params: params)
             }
             
         }
@@ -195,7 +194,7 @@ extension EventsViewController {
         }.onCellSelection { (cell, row) in
             let accountRow: AccountRow? = section.rowBy(tag: "userid")
             if let value = accountRow?.value {
-                Leanplum.setUserId(value)
+                LeanplumCT.setUserId(value)
             }
         }
         
@@ -226,7 +225,7 @@ extension EventsViewController {
 
             if let key = keyRow?.value, let value = valueRow?.value {
                 let attributes: [String : Any] = [key : value]
-                Leanplum.setUserAttributes(attributes)
+                LeanplumCT.setUserAttributes(attributes)
             }
         }
         form +++ section
@@ -240,35 +239,6 @@ extension EventsViewController {
             $0.placeholder = "enter id"
             $0.tag = "deviceId"
         }
-
-        section <<< ButtonRow {
-            $0.title = "Set DeviceID"
-        }.onCellSelection { (cell, row) in
-            let accountRow: AccountRow? = section.rowBy(tag: "deviceId")
-            if let value = accountRow?.value {
-                Leanplum.setDeviceId(value)
-            }
-        }
-        
-        section <<< ButtonRow {
-            $0.title = "Set IDFA"
-        }.onCellSelection { (cell, row) in
-            AdsTrackingManager.showNativeAdsPrompt()
-        }
-        
-        form +++ section
-    }
-    
-    func buildForceContentUpdate() {
-        let section = Section("Force content update")
-        
-        section <<< ButtonRow {
-            $0.title = "Force Content Update"
-        }.onCellSelection({ (cell, row) in
-            Leanplum.forceContentUpdate({
-                
-            })
-        })
         
         form +++ section
     }
@@ -286,21 +256,21 @@ extension EventsViewController {
             $0.title = "Track"
             $0.value = "testEvent"
         }.onCellSelection { row, cell in
-            Leanplum.track(cell.value!)
+            LeanplumCT.track(cell.value!)
         }
 
         section <<< LabelRow {
             $0.title = "Advance"
             $0.value = "testState"
         }.onCellSelection { row, cell in
-            Leanplum.advance(state: cell.value!)
+            LeanplumCT.advance(state: cell.value!)
         }
 
         section <<< LabelRow {
             $0.title = "SetUserAttribute"
             $0.value = "{ age: \"(random)\" }"
         }.onCellSelection { row, cell in
-            Leanplum.setUserAttributes(["age": String(arc4random())])
+            LeanplumCT.setUserAttributes(["age": String(arc4random())])
         }
 
         form +++ section
@@ -317,14 +287,14 @@ extension EventsViewController {
             $0.title = "Session Limit"
             $0.value = "3"
         }.onCellSelection { row, cell in
-            Leanplum.advance(state: "sessionLimit")
+            LeanplumCT.advance(state: "sessionLimit")
         }
 
         section <<< LabelRow {
             $0.title = "Lifetime Limit"
             $0.value = "3"
         }.onCellSelection { row, cell in
-            Leanplum.advance(state: "lifetimeLimit")
+            LeanplumCT.advance(state: "lifetimeLimit")
         }
 
         form +++ section
@@ -337,7 +307,7 @@ extension EventsViewController {
             $0.title = "Chained message"
             $0.value = "chainedInApp"
         }.onCellSelection { row, cell in
-            Leanplum.track(cell.value!)
+            LeanplumCT.track(cell.value!)
         }
 
         form +++ section
@@ -350,7 +320,7 @@ extension EventsViewController {
             $0.title = "Track"
             $0.value = "DifferentPrioritySameTime"
         }.onCellSelection { row, cell in
-            Leanplum.track(cell.value!)
+            LeanplumCT.track(cell.value!)
         }
 
         form +++ section

@@ -20,6 +20,8 @@ class MigrationViewController: FormViewController {
     var var_dot: CleverTapSDK.Var?
     var var_dot_dict: CleverTapSDK.Var?
     
+    let instance = UIApplication.shared.appDelegate.cleverTapInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,9 +31,10 @@ class MigrationViewController: FormViewController {
     func build() {
         buildStatus()
         // CleverTap Variables
-        Leanplum.addCleverTapInstance(callback: CleverTapInstanceCallback(callback: { [weak self] instance in
-            self?.buildVariables(instance)
-        }))
+        if let instance = instance {
+            buildVariables(instance)
+            Log.print("CleverTap Instance is nil.")
+        }
         buildAttributes()
         buildAdvance()
         buildTrack()
@@ -68,36 +71,22 @@ class MigrationViewController: FormViewController {
         let section = Section("Migration Manager")
         
         section <<< LabelRow {
-            $0.title = "State"
-            $0.value = MigrationManager.shared.state.description
-        }
-        section <<< LabelRow {
             $0.title = "Account Id"
-            $0.value = MigrationManager.shared.cleverTapAccountId
+            $0.value = UIApplication.shared.appDelegate.context.app?.accountId
         }
         section <<< LabelRow {
             $0.title = "Account Token"
-            $0.value = MigrationManager.shared.cleverTapAccountToken
+            $0.value = UIApplication.shared.appDelegate.context.app?.accountToken
         }
         section <<< LabelRow {
             $0.title = "Account Region"
-            $0.value = MigrationManager.shared.cleverTapAccountRegion
+            $0.value = UIApplication.shared.appDelegate.context.app?.region
         }
-        
-        section <<< ButtonRow {
-            $0.title = "View Attribute Mappings"
-            $0.presentationMode = .show(controllerProvider: .callback(builder: { () -> UIViewController in
-                let ctrl = TextAreaController()
-                ctrl.title = "Attribute Mappings"
-                let mappings = MigrationManager.shared.cleverTapAttributeMappings
-                ctrl.message = Util.jsonPrettyString(mappings)
-                return ctrl
-            }), onDismiss: nil)
-        }
-        
+
+        let identityKeys = instance?.config.identityKeys as? [String] ?? []
         section <<< LabelRow {
             $0.title = "Identity Keys"
-            $0.value = MigrationManager.shared.cleverTapIdentityKeys.joined(separator: ", ")
+            $0.value = identityKeys.joined(separator: ", ")
         }
         
         form +++ section
@@ -109,19 +98,19 @@ class MigrationViewController: FormViewController {
         section <<< ButtonRow(){
             $0.title = "setUserAttributes(one-attribute)"
         }.onCellSelection({ cell, row in
-            Leanplum.setUserAttributes(self.singleParam)
+            LeanplumCT.setUserAttributes(self.singleParam)
         })
         
         section <<< ButtonRow(){
             $0.title = "setUserAttributes(all-type-attributes)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.setUserAttributes(attributeParams)
+            LeanplumCT.setUserAttributes(attributeParams)
         })
         
         section <<< ButtonRow(){
             $0.title = "setUserAttributes(mixed-attributes)"
         }.onCellSelection({ cell, row in
-            Leanplum.setUserAttributes(["name1": "ct value",
+            LeanplumCT.setUserAttributes(["name1": "ct value",
                                         "number": 4,
                                         "arr": ["c", 3, "d", 4, nil], // optionals
                                         "empty": nil])
@@ -134,7 +123,7 @@ class MigrationViewController: FormViewController {
             dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
             dateFormatter.dateFormat = "dd-MM-yyyy"
             if let date = dateFormatter.date(from: "10-01-1999") {
-                Leanplum.setUserAttributes(["DOB": date])
+                LeanplumCT.setUserAttributes(["DOB": date])
             }
         })
         
@@ -147,31 +136,31 @@ class MigrationViewController: FormViewController {
         section <<< ButtonRow(){
             $0.title = "advance(null)"
         }.onCellSelection({ cell, row in
-            Leanplum.advance(state: nil) // will be skipped in CT
+            LeanplumCT.advance(state: nil) // will be skipped in CT
         })
         
         section <<< ButtonRow(){
             $0.title = "advance(event)"
         }.onCellSelection({ cell, row in
-            Leanplum.advance(state: row.title)
+            LeanplumCT.advance(state: row.title)
         })
         
         section <<< ButtonRow(){
             $0.title = "advance(event info)"
         }.onCellSelection({ cell, row in
-            Leanplum.advance(state: row.title, info: "info")
+            LeanplumCT.advance(state: row.title, info: "info")
         })
         
         section <<< ButtonRow(){
             $0.title = "advance(event info one-param)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.advance(state: row.title, info: "info", params: singleParam)
+            LeanplumCT.advance(state: row.title, info: "info", params: singleParam)
         })
         
         section <<< ButtonRow(){
             $0.title = "advance(event info all-type-params)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.advance(state: row.title, info: "info", params: trackParams as? [String: Any])
+            LeanplumCT.advance(state: row.title, info: "info", params: trackParams as? [String: Any])
         })
         
         form +++ section
@@ -183,25 +172,25 @@ class MigrationViewController: FormViewController {
         section <<< ButtonRow(){
             $0.title = "track(event)"
         }.onCellSelection({ cell, row in
-            Leanplum.track(row.title!)
+            LeanplumCT.track(row.title!)
         })
         
         section <<< ButtonRow(){
             $0.title = "track(event info)"
         }.onCellSelection({ cell, row in
-            Leanplum.track(row.title!, info: "info")
+            LeanplumCT.track(row.title!, info: "info")
         })
         
         section <<< ButtonRow(){
             $0.title = "track(event value info one-param)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.track(row.title!, value: 5.0, info: "info", params: singleParam)
+            LeanplumCT.track(row.title!, value: 5.0, info: "info", params: singleParam)
         })
         
         section <<< ButtonRow(){
             $0.title = "track(event all-type-params)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.track(row.title!, params: trackParams as? [String: Any])
+            LeanplumCT.track(row.title!, params: trackParams as? [String: Any])
         })
         
         form +++ section
@@ -213,19 +202,19 @@ class MigrationViewController: FormViewController {
         section <<< ButtonRow(){
             $0.title = "trackPurchase(event 0 null null)"
         }.onCellSelection({ cell, row in
-            Leanplum.track(event: row.title!, value: 0.0, currencyCode: nil, params: nil)
+            LeanplumCT.track(event: row.title!, value: 0.0, currencyCode: nil, params: nil)
         })
         
         section <<< ButtonRow(){
             $0.title = "trackPurchase(event value currency one-param)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.track(event: row.title!, value: 2.5, currencyCode: "BGN", params: singleParam)
+            LeanplumCT.track(event: row.title!, value: 2.5, currencyCode: "BGN", params: singleParam)
         })
         
         section <<< ButtonRow(){
             $0.title = "trackPurchase(event value currency all-type-params)"
         }.onCellSelection({ [self] cell, row in
-            Leanplum.track(event: row.title!, value: 2.5, currencyCode: "BGN", params: trackParams as? [String: Any])
+            LeanplumCT.track(event: row.title!, value: 2.5, currencyCode: "BGN", params: trackParams as? [String: Any])
         })
         
         form +++ section
@@ -237,7 +226,7 @@ class MigrationViewController: FormViewController {
         section <<< ButtonRow(){
             $0.title = "setTrafficSource"
         }.onCellSelection({ cell, row in
-            Leanplum.setTrafficSource(info: [
+            LeanplumCT.setTrafficSource(info: [
                 "publisherId": "pub-id",
                 "publisherName": "pub-name",
                 "publisherSubPublisher": "sub-publisher",

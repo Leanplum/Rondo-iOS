@@ -3,18 +3,19 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 13/12/2019.
-//  Copyright © 2022 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
-import Leanplum
 import CleverTapSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    let context = AppContext()
+    public let context = AppContext()
+    
+    public var cleverTapInstance: CleverTap?
     
     var notificationOptions: UNNotificationPresentationOptions = []
 
@@ -22,26 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         application.applicationIconBadgeNumber = 0
+
+        cleverTapInstance = context.start(with: context.app)
+        guard let cleverTapInstance = cleverTapInstance else { return true }
         
-        Leanplum.setLogLevel(LeanplumLogLevel.debug)
-        
-        let ctCallback = CleverTapInstanceCallback(callback: { cleverTapInstance in
-            Log.print("CleverTapInstance created")
-            // Enable IP location
-            cleverTapInstance.enableDeviceNetworkInfoReporting(true)
-            cleverTapInstance.setPushNotificationDelegate(self)
-        })
-        Leanplum.addCleverTapInstance(callback: ctCallback)
-        
-        // Start Leanplum
-        do {
-            try context.start(with: context.app, environment: context.env) { success in
-                Log.print("Leanplum started \(success ? "successfully" : "unsuccessfully").")
-            }
-        } catch {
-            // add alert
-            Log.print("Unexpected error: \(error).")
-        }
+        cleverTapInstance.enableDeviceNetworkInfoReporting(true)
+        cleverTapInstance.setPushNotificationDelegate(self)
         
         return true
     }
