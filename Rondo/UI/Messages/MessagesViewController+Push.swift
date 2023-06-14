@@ -3,7 +3,7 @@
 //  Rondo-iOS
 //
 //  Created by Nikola Zagorchev on 19.07.22.
-//  Copyright © 2022 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import Foundation
@@ -15,17 +15,11 @@ extension MessagesViewController {
         
         buildPushPermissions()
         buildPushTriggers()
-//        buildCleverTapPush()
         buildNotificationPresentationOptions()
     }
     
     func buildPushPermissions() {
         let section = Section("Push Permissions")
-        
-        section <<< LabelRow {
-            $0.title = "Push Permissions Through Leanplum"
-            $0.tag = "registerPush"
-        }
         
         section <<< LabelRow {
             $0.title = "System Push Permission"
@@ -94,33 +88,6 @@ extension MessagesViewController {
         
         form +++ section
     }
-    
-//    func buildCleverTapPush() {
-//        let section = Section("CleverTap Push")
-//
-//        section <<< SwitchRow {
-//            $0.title = "Open DeepLinks In Foreground"
-//            $0.value = false
-//        }.onChange({ row in
-//            Leanplum.setCleverTapOpenDeepLinksInForeground(row.value!)
-//        })
-//
-//        section <<< SwitchRow {
-//            $0.title = "Handle CleverTap Notification"
-//            $0.value = false
-//        }.onChange({ row in
-//            if row.value! {
-//                Leanplum.setHandleCleverTapNotification { (userInfo, isNotificationOpen, block) in
-//                    Log.print("CleverTap handle push block: \(userInfo), isNotificationOpen: \(isNotificationOpen)")
-//                    block(isNotificationOpen)
-//                }
-//            } else {
-//                Leanplum.setHandleCleverTapNotification(nil)
-//            }
-//        })
-//
-//        form +++ section
-//    }
     
     func buildNotificationPresentationOptions() {
         let section = Section("Notification Presentation Options")

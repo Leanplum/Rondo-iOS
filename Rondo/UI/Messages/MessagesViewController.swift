@@ -3,7 +3,7 @@
 //  LPFeatures
 //
 //  Created by Milos Jakovljevic on 18/03/2020.
-//  Copyright © 2022 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,6 @@ class MessagesViewController: FormViewController {
     enum MessageSegments: String, CaseIterable, CustomStringConvertible {
         case iam = "IAM"
         case push = "Push"
-//        case actionManager = "Action Manager"
         
         var description: String {
             return rawValue
@@ -26,8 +25,6 @@ class MessagesViewController: FormViewController {
     }
     
     private let segmentedControl = UISegmentedControl(items: MessageSegments.items)
-
-//    let model = ActionManagerModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +73,6 @@ class MessagesViewController: FormViewController {
             buildIAM()
         case .push:
             buildPush()
-//        case .actionManager:
-//            buildActionManager()
         }
     }
     
