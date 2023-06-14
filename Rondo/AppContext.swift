@@ -50,9 +50,9 @@ class AppContext {
             if apps.isEmpty {
                 apps = [
                     LeanplumApp(name: "TEST-Zagorchev",
-                                accountId: "TEST-7Z8-W9R-876Z",
-                                accountToken: "TEST-2c0-b1a",
-                                region: "sk1-staging-25")
+                                accountId: "-",
+                                accountToken: "-",
+                                region: "-")
                 ]
             }
 
@@ -70,9 +70,10 @@ class AppContext {
         self.app = app
         let startAttr = ["startAttributeInt": 1,
                          "startAttributeString": "stringValueFromStart"] as [String : Any]
-        let config = CleverTapInstanceConfig(accountId: app.accountId, accountToken: app.accountToken, accountRegion: app.region)
-        let instance = CleverTap.instance(with: config)
-        instance.notifyApplicationLaunched(withOptions: [:])
+        CleverTap.setCredentialsWithAccountID(app.accountId, token: app.accountToken, region: app.region)
+        // Use autoIntegrate
+        let instance = CleverTap.autoIntegrate() // Will set the defaultInstace
+        guard let instance = instance else { return nil }
         LeanplumCT.instance = instance
         LeanplumCT.setLogLevel(logLevel)
         LeanplumCT.setUserAttributes(startAttr)
