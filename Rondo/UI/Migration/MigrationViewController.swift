@@ -3,7 +3,7 @@
 //  Rondo-iOS
 //
 //  Created by Nikola Zagorchev on 7.10.22.
-//  Copyright © 2022 Leanplum. All rights reserved.
+//  Copyright © 2023 Leanplum. All rights reserved.
 //
 
 import Foundation
