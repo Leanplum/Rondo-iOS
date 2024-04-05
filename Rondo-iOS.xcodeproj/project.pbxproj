@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,7 +33,6 @@
 		07869B72243CBB83005E7E94 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07869B71243CBB83005E7E94 /* AppsViewController.swift */; };
 		078D587F243CDACB00D088BD /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D587E243CDACB00D088BD /* ScannerViewController.swift */; };
 		078D5881243CEC8000D088BD /* UserDefaultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D5880243CEC8000D088BD /* UserDefaultExtension.swift */; };
-		5D9C5543A193B518D125ED09 /* Pods_RichPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4F20E926C5E0560928FD9F /* Pods_RichPush.framework */; };
 		6A33382E2542C187005F6097 /* AdsTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33382D2542C187005F6097 /* AdsTrackingManager.swift */; };
 		6A3338332542C4AC005F6097 /* LPAdsTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3338322542C4AC005F6097 /* LPAdsTrackingManager.m */; };
 		6A3752702514E49200BE87D3 /* AdsAskToAskMessageTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A37526F2514E49200BE87D3 /* AdsAskToAskMessageTemplate.swift */; };
@@ -48,8 +47,11 @@
 		6A7B2ECD28872A5F00F73EC7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B2ECC28872A5F00F73EC7 /* Util.swift */; };
 		6A9197D6250A553700B13E05 /* LPAdsAskToAskMessageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9197D4250A553700B13E05 /* LPAdsAskToAskMessageTemplate.m */; };
 		6AD7F0422A0C1EF700B4E16B /* MigrationViewController+Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD7F0412A0C1EF700B4E16B /* MigrationViewController+Variables.swift */; };
+		6B5879F42BBFFAF60077493E /* Leanplum in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5879F32BBFFAF60077493E /* Leanplum */; };
+		6B5879F62BBFFAF60077493E /* LeanplumLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5879F52BBFFAF60077493E /* LeanplumLocation */; };
+		6B5879FC2BBFFB7E0077493E /* CTNotificationService in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5879FB2BBFFB7E0077493E /* CTNotificationService */; };
+		6B5879FF2BBFFDE80077493E /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5879FE2BBFFDE80077493E /* Eureka */; };
 		6BB81BB02B0290BE00E6BCCB /* gaming-promo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BB81BAF2B0290BE00E6BCCB /* gaming-promo.png */; };
-		8C0B0D93D1B61FAC21A6FC4C /* Pods_Rondo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DDAFBDF6F1A75C834118A65 /* Pods_Rondo_iOS.framework */; };
 		A82BBF5F24783AB300B99FA0 /* LeanplumEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82BBF5E24783AB300B99FA0 /* LeanplumEnv.swift */; };
 		A8B533E424AC192F009F53F3 /* AddEnvironmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B533E324AC192F009F53F3 /* AddEnvironmentViewController.swift */; };
 		A8C78A5D24992B46004729A1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C78A5C24992B46004729A1 /* NotificationService.swift */; };
@@ -85,7 +87,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0340FE885431577C10079969 /* Pods-LPFeatures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPFeatures.debug.xcconfig"; path = "Target Support Files/Pods-LPFeatures/Pods-LPFeatures.debug.xcconfig"; sourceTree = "<group>"; };
 		07022BC32425407300EAF3D3 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		0739F941248066DC00B12A6E /* EnvironmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentsViewController.swift; sourceTree = "<group>"; };
 		0739F94424806C6C00B12A6E /* Rondo-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rondo-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -116,10 +117,6 @@
 		07869B71243CBB83005E7E94 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		078D587E243CDACB00D088BD /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		078D5880243CEC8000D088BD /* UserDefaultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultExtension.swift; sourceTree = "<group>"; };
-		0DDAFBDF6F1A75C834118A65 /* Pods_Rondo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rondo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A30DB21F1C88ACDBA8FB48C /* Pods-LPFeatures Sources.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPFeatures Sources.debug.xcconfig"; path = "Target Support Files/Pods-LPFeatures Sources/Pods-LPFeatures Sources.debug.xcconfig"; sourceTree = "<group>"; };
-		4A5DC6724D7D0A582D7E5CF7 /* Pods-LPFeatures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPFeatures.release.xcconfig"; path = "Target Support Files/Pods-LPFeatures/Pods-LPFeatures.release.xcconfig"; sourceTree = "<group>"; };
-		527645EA8B8AA65DB9CD3848 /* Pods-Rondo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rondo.debug.xcconfig"; path = "Target Support Files/Pods-Rondo/Pods-Rondo.debug.xcconfig"; sourceTree = "<group>"; };
 		6A33382D2542C187005F6097 /* AdsTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTrackingManager.swift; sourceTree = "<group>"; };
 		6A3338312542C4AC005F6097 /* LPAdsTrackingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPAdsTrackingManager.h; sourceTree = "<group>"; };
 		6A3338322542C4AC005F6097 /* LPAdsTrackingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPAdsTrackingManager.m; sourceTree = "<group>"; };
@@ -138,23 +135,15 @@
 		6A9197D5250A553700B13E05 /* LPAdsAskToAskMessageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPAdsAskToAskMessageTemplate.h; sourceTree = "<group>"; };
 		6AD7F0412A0C1EF700B4E16B /* MigrationViewController+Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MigrationViewController+Variables.swift"; sourceTree = "<group>"; };
 		6BB81BAF2B0290BE00E6BCCB /* gaming-promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gaming-promo.png"; sourceTree = "<group>"; };
-		871B813E40B9D5721DE92AC4 /* Pods-Rondo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rondo.release.xcconfig"; path = "Target Support Files/Pods-Rondo/Pods-Rondo.release.xcconfig"; sourceTree = "<group>"; };
-		88A45896E92697F830BDDD12 /* Pods-Rondo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rondo-iOS.release.xcconfig"; path = "Target Support Files/Pods-Rondo-iOS/Pods-Rondo-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		962D0A550FE14C657F76B57D /* Pods-RichPush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RichPush.debug.xcconfig"; path = "Target Support Files/Pods-RichPush/Pods-RichPush.debug.xcconfig"; sourceTree = "<group>"; };
 		A82BBF5D24782B4F00B99FA0 /* Rondo-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rondo-iOS.entitlements"; sourceTree = "<group>"; };
 		A82BBF5E24783AB300B99FA0 /* LeanplumEnv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeanplumEnv.swift; sourceTree = "<group>"; };
 		A8B533E324AC192F009F53F3 /* AddEnvironmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEnvironmentViewController.swift; sourceTree = "<group>"; };
 		A8C78A5A24992B46004729A1 /* RichPush.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichPush.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C78A5C24992B46004729A1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		A8C78A5E24992B46004729A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD028D529A5A9E174D492CBE /* Pods-LPFeatures Sources.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPFeatures Sources.release.xcconfig"; path = "Target Support Files/Pods-LPFeatures Sources/Pods-LPFeatures Sources.release.xcconfig"; sourceTree = "<group>"; };
 		C90B360324DD819C002B4889 /* Test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test1.png; sourceTree = "<group>"; };
 		C90B360524DD82E5002B4889 /* Primary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Primary@2x.png"; sourceTree = "<group>"; };
 		C9E3A1A5278D7BBB00DFAA58 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		D5682E911E4DA8B24364D333 /* Pods_LPFeatures_Sources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPFeatures_Sources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D647E832B0D526E395A3F79C /* Pods-Rondo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rondo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Rondo-iOS/Pods-Rondo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		DC4F20E926C5E0560928FD9F /* Pods_RichPush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RichPush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC9E97B0CA447DF39CA46600 /* Pods-RichPush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RichPush.release.xcconfig"; path = "Target Support Files/Pods-RichPush/Pods-RichPush.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +151,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0B0D93D1B61FAC21A6FC4C /* Pods_Rondo_iOS.framework in Frameworks */,
+				6B5879F42BBFFAF60077493E /* Leanplum in Frameworks */,
+				6B5879F62BBFFAF60077493E /* LeanplumLocation in Frameworks */,
+				6B5879FF2BBFFDE80077493E /* Eureka in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D9C5543A193B518D125ED09 /* Pods_RichPush.framework in Frameworks */,
+				6B5879FC2BBFFB7E0077493E /* CTNotificationService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +202,7 @@
 				A8C78A5B24992B46004729A1 /* RichPush */,
 				C9E3A1A8278D7D8800DFAA58 /* Logging */,
 				074C65CA23A399D200EC586B /* Products */,
-				DC160EBF7ABA375EC345F8F6 /* Pods */,
-				E28FCFA7B56C134F2F17DD7B /* Frameworks */,
+				6B5879F22BBFFAF60077493E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -393,6 +383,13 @@
 			path = MessageTemplates;
 			sourceTree = "<group>";
 		};
+		6B5879F22BBFFAF60077493E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8C78A5B24992B46004729A1 /* RichPush */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,33 +407,6 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
-		DC160EBF7ABA375EC345F8F6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0340FE885431577C10079969 /* Pods-LPFeatures.debug.xcconfig */,
-				4A5DC6724D7D0A582D7E5CF7 /* Pods-LPFeatures.release.xcconfig */,
-				3A30DB21F1C88ACDBA8FB48C /* Pods-LPFeatures Sources.debug.xcconfig */,
-				BD028D529A5A9E174D492CBE /* Pods-LPFeatures Sources.release.xcconfig */,
-				527645EA8B8AA65DB9CD3848 /* Pods-Rondo.debug.xcconfig */,
-				871B813E40B9D5721DE92AC4 /* Pods-Rondo.release.xcconfig */,
-				D647E832B0D526E395A3F79C /* Pods-Rondo-iOS.debug.xcconfig */,
-				88A45896E92697F830BDDD12 /* Pods-Rondo-iOS.release.xcconfig */,
-				962D0A550FE14C657F76B57D /* Pods-RichPush.debug.xcconfig */,
-				DC9E97B0CA447DF39CA46600 /* Pods-RichPush.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		E28FCFA7B56C134F2F17DD7B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D5682E911E4DA8B24364D333 /* Pods_LPFeatures_Sources.framework */,
-				0DDAFBDF6F1A75C834118A65 /* Pods_Rondo_iOS.framework */,
-				DC4F20E926C5E0560928FD9F /* Pods_RichPush.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -444,12 +414,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 074C65DD23A399D400EC586B /* Build configuration list for PBXNativeTarget "Rondo-iOS" */;
 			buildPhases = (
-				60787AA64799D9E7F63A220F /* [CP] Check Pods Manifest.lock */,
 				074C65C523A399D200EC586B /* Sources */,
 				074C65C623A399D200EC586B /* Frameworks */,
 				074C65C723A399D200EC586B /* Resources */,
-				C43E4AEB49019780D9456685 /* [CP] Embed Pods Frameworks */,
 				A8C78A6224992B46004729A1 /* Embed App Extensions */,
+				6B587A002BC000800077493E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,6 +426,11 @@
 				A8C78A6024992B46004729A1 /* PBXTargetDependency */,
 			);
 			name = "Rondo-iOS";
+			packageProductDependencies = (
+				6B5879F32BBFFAF60077493E /* Leanplum */,
+				6B5879F52BBFFAF60077493E /* LeanplumLocation */,
+				6B5879FE2BBFFDE80077493E /* Eureka */,
+			);
 			productName = LPFeatures;
 			productReference = 074C65C923A399D200EC586B /* Rondo-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -465,7 +439,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8C78A6524992B46004729A1 /* Build configuration list for PBXNativeTarget "RichPush" */;
 			buildPhases = (
-				3C36C2B2AD487BBC4A35D99A /* [CP] Check Pods Manifest.lock */,
 				A8C78A5624992B46004729A1 /* Sources */,
 				A8C78A5724992B46004729A1 /* Frameworks */,
 				A8C78A5824992B46004729A1 /* Resources */,
@@ -475,6 +448,9 @@
 			dependencies = (
 			);
 			name = RichPush;
+			packageProductDependencies = (
+				6B5879FB2BBFFB7E0077493E /* CTNotificationService */,
+			);
 			productName = RichPush;
 			productReference = A8C78A5A24992B46004729A1 /* RichPush.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -507,6 +483,11 @@
 				Base,
 			);
 			mainGroup = 074C65C023A399D200EC586B;
+			packageReferences = (
+				6B00F6D02BBFFA18000B1E26 /* XCLocalSwiftPackageReference "../tmp/Leanplum-iOS-SDK" */,
+				6B5879FA2BBFFB7E0077493E /* XCRemoteSwiftPackageReference "CTNotificationService" */,
+				6B5879FD2BBFFDE80077493E /* XCRemoteSwiftPackageReference "Eureka" */,
+			);
 			productRefGroup = 074C65CA23A399D200EC586B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -544,66 +525,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C36C2B2AD487BBC4A35D99A /* [CP] Check Pods Manifest.lock */ = {
+		6B587A002BC000800077493E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RichPush-checkManifestLockResult.txt",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		60787AA64799D9E7F63A220F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Rondo-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C43E4AEB49019780D9456685 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rondo-iOS/Pods-Rondo-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Rondo-iOS/Pods-Rondo-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rondo-iOS/Pods-Rondo-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nmv ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/Frameworks/Leanplum.framework/Leanplum-iOS-SDK.bundle ${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -807,7 +744,6 @@
 		};
 		074C65DE23A399D400EC586B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D647E832B0D526E395A3F79C /* Pods-Rondo-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -821,6 +757,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leanplum.Rondo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.leanplum.Rondo-iOS";
@@ -833,7 +770,6 @@
 		};
 		074C65DF23A399D400EC586B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88A45896E92697F830BDDD12 /* Pods-Rondo-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -847,6 +783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leanplum.Rondo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.leanplum.Rondo-iOS";
@@ -858,7 +795,6 @@
 		};
 		A8C78A6324992B46004729A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 962D0A550FE14C657F76B57D /* Pods-RichPush.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -881,7 +817,6 @@
 		};
 		A8C78A6424992B46004729A1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC9E97B0CA447DF39CA46600 /* Pods-RichPush.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -933,6 +868,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6B00F6D02BBFFA18000B1E26 /* XCLocalSwiftPackageReference "../tmp/Leanplum-iOS-SDK" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../tmp/Leanplum-iOS-SDK";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B5879FA2BBFFB7E0077493E /* XCRemoteSwiftPackageReference "CTNotificationService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CleverTap/CTNotificationService";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.6;
+			};
+		};
+		6B5879FD2BBFFDE80077493E /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B5879F32BBFFAF60077493E /* Leanplum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B00F6D02BBFFA18000B1E26 /* XCLocalSwiftPackageReference "../tmp/Leanplum-iOS-SDK" */;
+			productName = Leanplum;
+		};
+		6B5879F52BBFFAF60077493E /* LeanplumLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B00F6D02BBFFA18000B1E26 /* XCLocalSwiftPackageReference "../tmp/Leanplum-iOS-SDK" */;
+			productName = LeanplumLocation;
+		};
+		6B5879FB2BBFFB7E0077493E /* CTNotificationService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B5879FA2BBFFB7E0077493E /* XCRemoteSwiftPackageReference "CTNotificationService" */;
+			productName = CTNotificationService;
+		};
+		6B5879FE2BBFFDE80077493E /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B5879FD2BBFFDE80077493E /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 074C65C123A399D200EC586B /* Project object */;
 }

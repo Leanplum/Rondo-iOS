@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LPMessageTemplateProtocol.h"
+#import <Leanplum/LPMessageTemplateProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

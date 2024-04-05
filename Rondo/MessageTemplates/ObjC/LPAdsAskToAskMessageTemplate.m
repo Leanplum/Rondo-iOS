@@ -11,7 +11,7 @@
 #import <Leanplum/LPActionContext.h>
 
 #import "LPAdsAskToAskMessageTemplate.h"
-#import "LPMessageTemplateUtilities.h"
+#import <Leanplum/LPMessageTemplateUtilities.h>
 #import "LPAdsTrackingManager.h"
 
 @implementation LPAdsAskToAskMessageTemplate
