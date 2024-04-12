@@ -9,7 +9,7 @@ end
 def use_release
   version = ENV['CT_SDK_VERSION']
   if version == nil
-    version = "5.0.1"
+    version = "6.2.0"
   end
   pod 'CleverTap-iOS-SDK', version
 end
@@ -22,8 +22,8 @@ target 'Rondo-iOS' do
   use_frameworks!
 
   # Release pods
-   use_source
-#  use_release
+  # use_source
+  use_release
 
   # Shared pods
   shared_pods
