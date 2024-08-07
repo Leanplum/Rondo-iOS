@@ -22,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         application.applicationIconBadgeNumber = 0
-        
+
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            Leanplum.setAppVersion(version)
+        }
         Leanplum.setLogLevel(LeanplumLogLevel.debug)
         
         CTCustomTemplatesManager.register(TemplateProducer())
