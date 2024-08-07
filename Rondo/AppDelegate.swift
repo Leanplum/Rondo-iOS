@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         Leanplum.setLogLevel(LeanplumLogLevel.debug)
         
+        CTCustomTemplatesManager.register(TemplateProducer())
+        
         let ctCallback = CleverTapInstanceCallback(callback: { cleverTapInstance in
             Log.print("CleverTapInstance created")
             // Enable IP location

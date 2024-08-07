@@ -5,13 +5,14 @@
 def use_lp_source
   pod 'Leanplum-iOS-SDK', :path => '../Leanplum-iOS-SDK'
   pod 'Leanplum-iOS-Location', :path => '../Leanplum-iOS-SDK'
+  pod 'CleverTap-iOS-SDK', :path => '../clevertap-ios-sdk'
 #  pod 'Leanplum-iOS-LocationAndBeacons', :path => '../Leanplum-iOS-SDK'
 end
 
 def use_lp_release
   version = ENV['LEANPLUM_SDK_VERSION']
   if version == nil
-    version = "6.4.1"
+    version = "6.5.0-beta1"
   end
   pod 'Leanplum-iOS-SDK', version
   pod 'Leanplum-iOS-LocationAndBeacons', version

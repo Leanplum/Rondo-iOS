@@ -3,12 +3,13 @@
 //  Rondo-iOS
 //
 //  Created by Nikola Zagorchev on 10.05.23.
-//  Copyright © 2023 Leanplum. All rights reserved.
+//  Copyright © 2024 Leanplum. All rights reserved.
 //
 
 import Foundation
 import Eureka
 import CleverTapSDK
+import SwiftUI
 
 extension MigrationViewController {
     func buildVariables(_ instance: CleverTap) {
@@ -17,12 +18,14 @@ extension MigrationViewController {
         instance.onVariablesChanged { [weak self] in
             Log.print("[CleverTap] onVariablesChanged")
             self?.buildVariablesLabels()
+            self?.buildFileVariablesLabels()
         }
         var_string?.onValueChanged {
             Log.print("[CleverTap] var_string onValueChanged: \(self.var_string?.stringValue ?? "var_string is nil")")
         }
         
         buildVariablesLabels()
+        buildFileVariablesLabels()
         buildVariablesActions(instance)
     }
     
@@ -44,6 +47,39 @@ extension MigrationViewController {
             "nested_float": 0.5,
             "nested_number": NSNumber(value: 32)
         ])
+        // Files
+        var_file_1 = instance.defineFileVar(name: "folder1.fileVariable")
+        var_file_2 = instance.defineFileVar(name: "folder1.folder2.fileVariable")
+        var_file_3 = instance.defineFileVar(name: "folder1.folder3.fileVariable")
+    }
+    
+    func buildFileVariablesLabels() {
+        let section = Section("CleverTap File Variables")
+        
+        let fileVariables = [var_file_1, var_file_2, var_file_3]
+        for fileVariable in fileVariables {
+            section <<< ButtonRow() {
+                $0.title = fileVariable?.name()
+                $0.tag = fileVariable?.name()
+                $0.cellStyle = .value1
+                $0.value = fileVariable?.fileValue ?? "File not present"
+                $0.presentationMode = .show(controllerProvider: .callback(builder: { () -> UIViewController in
+                    if let filePath = fileVariable?.fileValue {
+                        let url = URL(fileURLWithPath: filePath)
+                        return UIHostingController(rootView: FileTypePreview(fileURL: url))
+                    }
+                    return UIHostingController(rootView: Text("File not present"))
+                }), onDismiss: nil)
+                $0.displayValueFor = {
+                    return $0
+                }
+            }
+        }
+        
+        form.removeAll {
+            $0.header?.title == section.header?.title
+        }
+        form.insert(section, at: 1)
     }
     
     func buildVariablesLabels() {

@@ -3,7 +3,7 @@
 //  Rondo-iOS
 //
 //  Created by Nikola Zagorchev on 7.10.22.
-//  Copyright © 2023 Leanplum. All rights reserved.
+//  Copyright © 2024 Leanplum. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,9 @@ class MigrationViewController: FormViewController {
     var var_dict: CleverTapSDK.Var?
     var var_dot: CleverTapSDK.Var?
     var var_dot_dict: CleverTapSDK.Var?
+    var var_file_1: CleverTapSDK.Var?
+    var var_file_2: CleverTapSDK.Var?
+    var var_file_3: CleverTapSDK.Var?
     
     let refreshControl = UIRefreshControl()
     
@@ -43,6 +46,10 @@ class MigrationViewController: FormViewController {
         // CleverTap Variables
         Leanplum.addCleverTapInstance(callback: CleverTapInstanceCallback(callback: { [weak self] instance in
             self?.buildVariables(instance)
+        }))
+        // CleverTap Code Templates
+        Leanplum.addCleverTapInstance(callback: CleverTapInstanceCallback(callback: { [weak self] instance in
+            self?.buildCustomTemplates(instance)
         }))
         buildAttributes()
         buildAdvance()

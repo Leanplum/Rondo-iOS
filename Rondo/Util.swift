@@ -30,4 +30,18 @@ struct Util {
         let data = try! encoder.encode(model)
         return String(data: data, encoding: .utf8)!
     }
+    
+    static func removeTextBetweenAngles(from input: String) -> String? {
+        let pattern = "<[^>]*>"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            let range = NSRange(location: 0, length: input.utf16.count)
+            let modifiedString = regex.stringByReplacingMatches(in: input, options: [], range: range, withTemplate: "")
+            return modifiedString
+        } catch {
+            print("Invalid regex pattern")
+            return nil
+        }
+    }
 }
