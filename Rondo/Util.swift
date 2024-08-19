@@ -44,4 +44,16 @@ struct Util {
             return nil
         }
     }
+    
+    static func getForegroundWindow() -> UIWindow? {
+        let connectedScenes = UIApplication.shared.connectedScenes
+        for scene in connectedScenes {
+            if scene.activationState == .foregroundActive, let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+                window.windowScene = windowScene
+                return window
+            }
+        }
+        return nil
+    }
 }

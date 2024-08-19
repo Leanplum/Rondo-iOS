@@ -22,15 +22,7 @@ class TemplatePresenter: CTTemplatePresenter {
     }
     
     var foregroundWindow: UIWindow? {
-        let connectedScenes = UIApplication.shared.connectedScenes
-        for scene in connectedScenes {
-            if scene.activationState == .foregroundActive, let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-                window.windowScene = windowScene
-                return window
-            }
-        }
-        return nil
+        Util.getForegroundWindow()
     }
     
     public func onPresent(context: CTTemplateContext) {
