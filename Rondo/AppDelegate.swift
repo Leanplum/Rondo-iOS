@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         Leanplum.setLogLevel(LeanplumLogLevel.debug)
         
+        LeanplumCustomTemplates().defineActions()
         CTCustomTemplatesManager.register(TemplateProducer())
         
         let ctCallback = CleverTapInstanceCallback(callback: { cleverTapInstance in

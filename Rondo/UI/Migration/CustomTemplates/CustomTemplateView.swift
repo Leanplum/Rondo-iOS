@@ -35,7 +35,7 @@ struct CustomTemplateView: View {
     
     var title: String
     var message: String
-    var confirmAction: () -> Void
+    var confirmAction: (() -> Void)?
     var cancelAction: () -> Void
     var triggerAction: ((String) -> Void)?
     var openFileAction: ((String) -> String?)?
@@ -100,11 +100,13 @@ struct CustomTemplateView: View {
                         .buttonStyle()
                 }
                 
-                Button(action: {
-                    self.confirmAction()
-                }) {
-                    Text("Confirm")
-                        .buttonStyle()
+                if let confirmAction = self.confirmAction {
+                    Button(action: {
+                        confirmAction()
+                    }) {
+                        Text("Confirm")
+                            .buttonStyle()
+                    }
                 }
             }
         }

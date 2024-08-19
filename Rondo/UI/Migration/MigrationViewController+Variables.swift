@@ -20,6 +20,10 @@ extension MigrationViewController {
             self?.buildVariablesLabels()
             self?.buildFileVariablesLabels()
         }
+        instance.onVariablesChangedAndNoDownloadsPending { [weak self] in
+            Log.print("[CleverTap] onVariablesChangedAndNoDownloadsPending")
+            self?.buildFileVariablesLabels()
+        }
         var_string?.onValueChanged {
             Log.print("[CleverTap] var_string onValueChanged: \(self.var_string?.stringValue ?? "var_string is nil")")
         }
