@@ -34,7 +34,8 @@ class LeanplumCustomTemplates {
             ActionArg(name: "map", dictionary: [
                 "int": 0,
                 "string": "Default"
-            ])
+            ]),
+            ActionArg(name: "Open action", action: "")
         ], present: present(context:), dismiss: dismiss(context:))
     }
     
